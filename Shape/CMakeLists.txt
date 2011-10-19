@@ -14,4 +14,5 @@ add_executable(shape
 	Triangle.h
 	Rectangle.c
 	Rectangle.h
+	Object.h
 	main.c)

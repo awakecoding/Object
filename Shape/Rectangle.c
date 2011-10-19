@@ -1,34 +1,51 @@
 
 #include "Rectangle.h"
 
-Rectangle_t* Rectangle_New()
+oDefineConstructor(Rectangle);
+
+oMethod(Rectangle, void, Init)
 {
-	Rectangle_t* rectangle;
-
-	rectangle = (Rectangle_t*) malloc(sizeof(Rectangle_t));
-
-	rectangle->size = sizeof(Rectangle_t);
-
 	rectangle->width = 0;
 	rectangle->height = 0;
 
-	((Shape_t*) rectangle)->GetArea = (pShape_GetArea) Rectangle_GetArea;
-	((Shape_t*) rectangle)->GetPerimeter = (pShape_GetPerimeter) Rectangle_GetPerimeter;
+	oOverrideMethod(Rectangle, Shape, GetArea);
+	oOverrideMethod(Rectangle, Shape, GetPerimeter);
 
-	return rectangle;
+	oRegisterMethod(Rectangle, SetWidth);
+	oRegisterMethod(Rectangle, SetHeight);
 }
 
-void Rectangle_Free(Rectangle_t* rectangle)
+oMethod(Rectangle, void, Free)
 {
 	Shape_Free((Shape_t*) rectangle);
 }
 
-double Rectangle_GetArea(Rectangle_t* rectangle)
+oMethod(Rectangle, double, GetArea)
 {
-	return (double) (rectangle->width * rectangle->height);
+	return (rectangle->width * rectangle->height);
 }
 
-double Rectangle_GetPerimeter(Rectangle_t* rectangle)
+oMethod(Rectangle, double, GetPerimeter)
 {
-	return (double) (2 * rectangle->width + 2 * rectangle->height);
+	return (2 * rectangle->width + 2 * rectangle->height);
+}
+
+oMethod(Rectangle, void, SetWidth, double width)
+{
+	rectangle->width = width;
+}
+
+oMethod(Rectangle, void, SetHeight, double height)
+{
+	rectangle->height = height;
+}
+
+oMethod(Rectangle, int, Equals, Rectangle_t* otherRectangle)
+{
+	int equals;
+
+	equals = ((rectangle->width == otherRectangle->width) &&
+		(rectangle->height == otherRectangle->height)) ? 1 : 0;
+
+	return equals;
 }

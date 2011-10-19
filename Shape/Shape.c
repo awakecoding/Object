@@ -1,22 +1,24 @@
 
 #include "Shape.h"
 
-void Shape_New(Shape_t* shape)
+oDefineConstructor(Shape);
+
+oMethod(Shape, void, Init)
 {
-	shape->size = sizeof(Shape_t);
+
 }
 
-void Shape_Free(Shape_t* shape)
+oMethod(Shape, void, Free)
 {
 	free(shape);
 }
 
-double Shape_GetArea(Shape_t* shape)
+oMethod(Shape, double, GetArea)
 {
 	return shape->GetArea(shape);
 }
 
-double Shape_GetPerimeter(Shape_t* shape)
+oMethod(Shape, double, GetPerimeter)
 {
 	return shape->GetPerimeter(shape);
 }

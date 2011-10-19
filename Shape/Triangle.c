@@ -8,6 +8,15 @@ Triangle_t* Triangle_New()
 	Triangle_t* triangle;
 
 	triangle = (Triangle_t*) malloc(sizeof(Triangle_t));
+	
+	Triangle_Init(triangle);
+
+	return triangle;
+}
+
+void Triangle_Init(Triangle_t* triangle)
+{
+	Shape_Init((Shape_t*) triangle);
 
 	triangle->size = sizeof(Triangle_t);
 
@@ -17,8 +26,6 @@ Triangle_t* Triangle_New()
 	triangle->IsScalene = Triangle_IsScalene;
 	triangle->IsIsoceles = Triangle_IsIsosceles;
 	triangle->IsEquilateral = Triangle_IsEquilateral;
-
-	return triangle;
 }
 
 void Triangle_Free(Triangle_t* triangle)
@@ -61,4 +68,11 @@ int Triangle_IsIsosceles(Triangle_t* triangle)
 int Triangle_IsEquilateral(Triangle_t* triangle)
 {
 	return (triangle->a == triangle->b == triangle->c) ? 1 : 0;
+}
+
+void Triangle_SetSides(Triangle_t* triangle, double a, double b, double c)
+{
+	triangle->a = a;
+	triangle->b = b;
+	triangle->c = c;
 }

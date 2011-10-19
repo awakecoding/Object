@@ -4,21 +4,34 @@
 
 #include "Shape.h"
 
-typedef struct rectangle Rectangle_t;
+#define oRectangle_Self		rectangle
+#define oRectangle_Type		Rectangle_t
+#define oRectangle_Parent	Shape_t
 
-struct rectangle
+oDeclareClass(Rectangle);
+
+oDeclareMethod(Rectangle, void, SetWidth, double width);
+oDeclareMethod(Rectangle, void, SetHeight, double height);
+
+oDefineClass(Rectangle)
 {
-	Shape_t parent;
-
-	size_t size;
+	oDefineParent(Shape);
 
 	double width;
 	double height;
+
+	oInstanceMethod(Rectangle, SetWidth);
+	oInstanceMethod(Rectangle, SetHeight);
 };
 
 Rectangle_t* Rectangle_New();
-void Rectangle_Free(Rectangle_t* rectangle);
-double Rectangle_GetArea(Rectangle_t* rectangle);
-double Rectangle_GetPerimeter(Rectangle_t* rectangle);
+oMethod(Rectangle, void, Init);
+oMethod(Rectangle, void, Free);
+
+oMethod(Rectangle, double, GetArea);
+oMethod(Rectangle, double, GetPerimeter);
+oMethod(Rectangle, void, SetWidth, double width);
+oMethod(Rectangle, void, SetHeight, double height);
+oMethod(Rectangle, int, Equals, Rectangle_t* otherRectangle);
 
 #endif /* __RECTANGLE_H */

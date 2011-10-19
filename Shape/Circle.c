@@ -7,14 +7,17 @@ Circle_t* Circle_New()
 
 	circle = (Circle_t*) malloc(sizeof(Circle_t));
 
-	circle->size = sizeof(Circle_t);
+	Circle_Init(circle);
 
+	return circle;
+}
+
+void Circle_Init(Circle_t* circle)
+{
 	circle->radius = 0;
 
 	((Shape_t*) circle)->GetArea = (pShape_GetArea) Circle_GetArea;
 	((Shape_t*) circle)->GetPerimeter = (pShape_GetPerimeter) Circle_GetPerimeter;
-
-	return circle;
 }
 
 void Circle_Free(Circle_t* circle)

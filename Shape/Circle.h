@@ -10,14 +10,13 @@ struct circle
 {
 	Shape_t parent;
 
-	size_t size;
-
 	double radius;
 };
 
 #define PI		3.141592654
 
 Circle_t* Circle_New();
+void Circle_Init(Circle_t* circle);
 void Circle_Free(Circle_t* circle);
 double Circle_GetArea(Circle_t* circle);
 double Circle_GetPerimeter(Circle_t* circle);
