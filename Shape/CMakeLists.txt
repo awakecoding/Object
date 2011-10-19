@@ -6,6 +6,8 @@ project(Shape C)
 add_executable(shape
 	Shape.c
 	Shape.h
+	Square.c
+	Square.h
 	Circle.c
 	Circle.h
 	Triangle.c
