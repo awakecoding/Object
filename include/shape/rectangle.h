@@ -2,11 +2,10 @@
 #ifndef __RECTANGLE_H
 #define __RECTANGLE_H
 
-#include "Shape.h"
+#include <shape/shape.h>
 
 #define oRectangle_Self		rectangle
 #define oRectangle_Type		Rectangle_t
-#define oRectangle_Parent	Shape_t
 
 oDeclareClass(Rectangle);
 

@@ -1,0 +1,10 @@
+*.a
+*.cmake
+Makefile
+CMakeFiles
+CMakeCache.txt
+
+.project
+.cproject
+
+test/test

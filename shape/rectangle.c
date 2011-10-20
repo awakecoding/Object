@@ -1,5 +1,5 @@
 
-#include "Rectangle.h"
+#include <shape/rectangle.h>
 
 oDefineConstructor(Rectangle);
 

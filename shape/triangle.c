@@ -1,39 +1,26 @@
 
 #include <math.h>
 
-#include "Triangle.h"
+#include <shape/triangle.h>
 
-Triangle_t* Triangle_New()
+oDefineConstructor(Triangle);
+
+oMethod(Triangle, void, Init)
 {
-	Triangle_t* triangle;
-
-	triangle = (Triangle_t*) malloc(sizeof(Triangle_t));
-	
-	Triangle_Init(triangle);
-
-	return triangle;
-}
-
-void Triangle_Init(Triangle_t* triangle)
-{
-	Shape_Init((Shape_t*) triangle);
-
-	triangle->size = sizeof(Triangle_t);
-
 	((Shape_t*) triangle)->GetArea = (pShape_GetArea) Triangle_GetArea;
 	((Shape_t*) triangle)->GetPerimeter = (pShape_GetPerimeter) Triangle_GetPerimeter;
 
 	triangle->IsScalene = Triangle_IsScalene;
-	triangle->IsIsoceles = Triangle_IsIsosceles;
+	triangle->IsIsosceles = Triangle_IsIsosceles;
 	triangle->IsEquilateral = Triangle_IsEquilateral;
 }
 
-void Triangle_Free(Triangle_t* triangle)
+oMethod(Triangle, void, Free)
 {
 	Shape_Free((Shape_t*) triangle);
 }
 
-double Triangle_GetArea(Triangle_t* triangle)
+oMethod(Triangle, double, GetArea)
 {
 	double s;
 	double area;
@@ -50,27 +37,27 @@ double Triangle_GetArea(Triangle_t* triangle)
 	return area;
 }
 
-double Triangle_GetPerimeter(Triangle_t* triangle)
+oMethod(Triangle, double, GetPerimeter)
 {
 	return triangle->a + triangle->b + triangle->c;
 }
 
-int Triangle_IsScalene(Triangle_t* triangle)
+oMethod(Triangle, int, IsScalene)
 {
 	return (triangle->a != triangle->b != triangle->c) ? 1 : 0;
 }
 
-int Triangle_IsIsosceles(Triangle_t* triangle)
+oMethod(Triangle, int, IsIsosceles)
 {
 	return ((triangle->a == triangle->b) || (triangle->b == triangle->c) || (triangle->c == triangle->a)) ? 1 : 0;
 }
 
-int Triangle_IsEquilateral(Triangle_t* triangle)
+oMethod(Triangle, int, IsEquilateral)
 {
 	return (triangle->a == triangle->b == triangle->c) ? 1 : 0;
 }
 
-void Triangle_SetSides(Triangle_t* triangle, double a, double b, double c)
+oMethod(Triangle, void, SetSides, double a, double b, double c)
 {
 	triangle->a = a;
 	triangle->b = b;

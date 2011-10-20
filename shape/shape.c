@@ -1,5 +1,5 @@
 
-#include "Shape.h"
+#include <shape/shape.h>
 
 oDefineConstructor(Shape);
 

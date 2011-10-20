@@ -1,12 +1,11 @@
 
 #include <stdio.h>
-#include <windows.h>
 
-#include "Shape.h"
-#include "Square.h"
-#include "Circle.h"
-#include "Triangle.h"
-#include "Rectangle.h"
+#include <shape/shape.h>
+#include <shape/square.h>
+#include <shape/circle.h>
+#include <shape/triangle.h>
+#include <shape/rectangle.h>
 
 int main(int argc, char* argv[])
 {
@@ -52,8 +51,6 @@ int main(int argc, char* argv[])
 	Rectangle_Free(rectangle);
 	Triangle_Free(triangle);
 	Circle_Free(circle);
-
-	system("pause");
 
 	return 0;
 }
